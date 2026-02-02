@@ -44,8 +44,39 @@ Kernel: Linear ,
 Library: sklearn.svm.SVC .
 ## 🧾 Code Explanation (Main Steps)
 # Load Dataset
-from sklearn.datasets import load_breast_cancer
-cancer = load_breast_cancer()
-X = cancer.data[:, :2]
+from sklearn.datasets import load_breast_cancer ,
+cancer = load_breast_cancer() ,
+X = cancer.data[:, :2] ,
 y = cancer.target
+# Train Model
+from sklearn.svm import SVC ,
+svm = SVC(kernel="linear", C=1) ,
+svm.fit(X_train, y_train)
+# Visualize Decision Boundary
+from sklearn.inspection import DecisionBoundaryDisplay
+DecisionBoundaryDisplay.from_estimator(
+    svm, X,
+    response_method="predict",
+    cmap="Pastel1",
+    alpha=0.8
+)
+# 📈 Output
 
+Classification accuracy on test data ,
+Visual plot showing: Decision boundary,
+Data points,
+Class regions.
+# 🔍 Key Learnings
+
+1. SVM finds a hyperplane that maximizes the margin between classes.
+2. Linear kernel works well for linearly separable data.
+3. Visualization helps understand model behavior.
+# ⚠️ Limitations
+
+1. Only two features used.
+2. No feature scaling applied.
+3. Linear kernel may underperform on complex data.
+# 📚 References
+
+Scikit-learn Documentation ,
+Breast Cancer Wisconsin Dataset .
